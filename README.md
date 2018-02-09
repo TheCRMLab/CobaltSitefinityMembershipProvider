@@ -61,7 +61,7 @@ With:
     </membership>
 
 c.	Replace the following
-           <federatedAuthentication>
+      <federatedAuthentication>
         <wsFederation passiveRedirectEnabled="true" issuer="http://localhost" realm="http://localhost" requireHttps="false" />
         <cookieHandler requireSsl="false" />
       </federatedAuthentication>
@@ -88,9 +88,11 @@ e.	Save and close the web.config
 
 3.	Open the Security.config in the App_Data\Sitefinity\Configuration directory
 a.	Find the following node
-<securityConfig xmlns:config="urn:telerik:sitefinity:configuration" xmlns:type="urn:telerik:sitefinity:configuration:type" config:version="6.1.4700.0" authCookieName=".SFAUTH-sfsandbox.websiteurl.com" rolesCookieName=".SFROLES-sfsandbox.ramcotest.com" validationKey="[Variable]" decryptionKey="[Variable]">
+
+<securityConfig xmlns:config="urn:telerik:sitefinity:configuration" xmlns:type="urn:telerik:sitefinity:configuration:type" config:version="6.1.4700.0" authCookieName=".SFAUTH-sfsandbox.websiteurl.com" rolesCookieName=".SFROLES-sfsandbox.ramcotest.com" validationKey="[Variable]" decryptionKey="[Variable]"/>
+
 b.	Add the defaultBackedRoleProvider and defaultBackendMembershipProvider e.g.:
-<securityConfig xmlns:config="urn:telerik:sitefinity:configuration" xmlns:type="urn:telerik:sitefinity:configuration:type" config:version="6.1.4700.0" authCookieName="[Variable]" rolesCookieName=".SFROLES-sfsandbox.websiteurl.com" validationKey="[Variable]" decryptionKey="[Variable]" defaultBackendRoleProvider="Cobalt" defaultBackendMembershipProvider="Cobalt">
+<securityConfig xmlns:config="urn:telerik:sitefinity:configuration" xmlns:type="urn:telerik:sitefinity:configuration:type" config:version="6.1.4700.0" authCookieName="[Variable]" rolesCookieName=".SFROLES-sfsandbox.websiteurl.com" validationKey="[Variable]" decryptionKey="[Variable]" defaultBackendRoleProvider="Cobalt" defaultBackendMembershipProvider="Cobalt"/>
 
 c.	Replace the following
 
@@ -117,12 +119,12 @@ e.	Replace the following
 		<config:link name="OpenAccessMembership37Provider" path="migrationModuleConfig/membershipProviders/OpenAccessMembership37Provider" module="Migration" />
 	</membershipProviders>
 f.	With the following (replace Content Administrators with the administrator role configured in CRM to be supplied by Cobalt):
-		<roleProviders>
+	<roleProviders>
 		<add title="Cobalt" description="Cobalt" type="CobaltSitefinityMembershipProvider.SitefinityRoleDataProvider, CobaltSitefinityMembershipProvider" enabled="True" name="Cobalt" />
 	</roleProviders>
 	<membershipProviders>
-		<config:link name="OpenAccessMembership37Provider" path="migrationModuleConfig/membershipProviders/OpenAccessMembership37Provider" module="Migration" />
-		<add title="Cobalt" description="Cobalt" type="CobaltSitefinityMembershipProvider.SitefinityMembershipDataProvider, CobaltSitefinityMembershipProvider" enabled="True" name="Cobalt" />
+        <config:link name="OpenAccessMembership37Provider" path="migrationModuleConfig/membershipProviders/OpenAccessMembership37Provider" module="Migration" />
+	<add title="Cobalt" description="Cobalt" type="CobaltSitefinityMembershipProvider.SitefinityMembershipDataProvider, CobaltSitefinityMembershipProvider" enabled="True" name="Cobalt" />
 	</membershipProviders>
 	<administrativeRoles>
 		<role roleProvider="Cobalt" roleName="[Administrator Role]" />
